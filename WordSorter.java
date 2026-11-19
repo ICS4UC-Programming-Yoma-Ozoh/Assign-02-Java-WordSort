@@ -2,13 +2,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
 /**
  * This program reads a text file, extracts all words,
  * sorts them alphabetically, and writes them to an output file.
- * Includes random input generation and binary search.
+ * Includes random input generator and binary search.
  *
  * @author  Yoma Ozoh
  * @version 1.0
@@ -168,7 +169,7 @@ public final class WordSorter {
      * @return Array of extracted lowercase words
      */
     public static String[] extractWords(final String fileName) {
-        // Create dynamic list to hold extracted words
+        // Create list to hold extracted words
         final ArrayList<String> wordList = new ArrayList<>();
 
         // Try opening input file to read
@@ -199,32 +200,17 @@ public final class WordSorter {
         return wordList.toArray(new String[0]);
     }
 
-    /**
-     * Sorts an array of strings alphabetically using Bubble Sort.
+/**
+     * Sorts an array of strings alphabetically.
      *
      * @param wordsArray The unsorted array of words
      * @return Alphabetically sorted array of words
      */
     public static String[] sortWordsAlphabetically(
             final String[] wordsArray) {
-        // Get total number of words in array
-        final int n = wordsArray.length;
-        // Outer loop for each sorting pass
-        for (int i = 0; i < n - 1; i++) {
-            // Inner loop to compare adjacent words
-            for (int j = 0; j < n - i - 1; j++) {
-                // Check if current word comes after next word
-                if (wordsArray[j].compareTo(wordsArray[j + 1]) > 0) {
-                    // Store current word temporarily
-                    final String temp = wordsArray[j];
-                    // Move next word to current spot
-                    wordsArray[j] = wordsArray[j + 1];
-                    // Place temporary word into next spot
-                    wordsArray[j + 1] = temp;
-                }
-            }
-        }
-        // Return sorted array
+        // Use Java's built-in sort to arrange words from A to Z
+        Arrays.sort(wordsArray);
+        // Return the sorted array
         return wordsArray;
     }
 
